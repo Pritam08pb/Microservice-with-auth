@@ -1,0 +1,18 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# install dependencies
+COPY services/auth-service/package*.json ./services/auth-service/
+RUN cd services/auth-service && npm install
+
+# copy whole monorepo so shared folder exists
+COPY . .
+
+WORKDIR /app/services/auth-service
+
+RUN npm run build
+
+EXPOSE 4001
+
+CMD ["npm","run","dev"]

@@ -1,0 +1,50 @@
+{
+  "name": "helpy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI Conversation Intelligence System (Microservices)",
+
+  "scripts": {
+    "docker:infra": "docker compose -f infra/docker-compose.yml up -d postgres redis mongodb zookeeper kafka",
+
+    "dev:auth": "npm run dev --prefix services/auth-service",
+    "dev:notification": "npm run dev --prefix services/notification-service",
+    "dev:gateway": "npm run dev --prefix gateway/api-gateway",
+
+    "dev": "concurrently \"npm run dev:auth\" \"npm run dev:notification\" \"npm run dev:gateway\"",
+
+    "install:all": "concurrently \"npm install --prefix services/auth-service\" \"npm install --prefix services/notification-service\" \"npm install --prefix gateway/api-gateway\"",
+
+    "clean:auth": "rimraf services/auth-service/node_modules services/auth-service/dist services/auth-service/package-lock.json",
+    "clean:notification": "rimraf services/notification-service/node_modules services/notification-service/dist services/notification-service/package-lock.json",
+    "clean:gateway": "rimraf gateway/api-gateway/node_modules gateway/api-gateway/dist gateway/api-gateway/package-lock.json",
+
+    "clean:all": "concurrently \"npm run clean:auth\" \"npm run clean:notification\" \"npm run clean:gateway\"",
+
+    "build:auth": "npm run build --prefix services/auth-service",
+    "build:notification": "npm run build --prefix services/notification-service",
+    "build:gateway": "npm run build --prefix gateway/api-gateway",
+
+    "build": "concurrently \"npm run build:auth\" \"npm run build:notification\" \"npm run build:gateway\"",
+
+    "docker:up": "docker compose -f infra/docker-compose.yml up -d",
+    "docker:down": "docker compose -f infra/docker-compose.yml down",
+    "docker:build": "docker compose -f infra/docker-compose.yml up --build",
+    "logs": "docker compose -f infra/docker-compose.yml logs -f"
+  },
+
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "ioredis": "^5.10.0",
+    "kafkajs": "^2.2.4",
+    "mongoose": "^9.2.4",
+    "pg": "^8.20.0"
+  },
+
+  "devDependencies": {
+    "@types/pg": "^8.18.0",
+    "concurrently": "^9.2.1",
+    "rimraf": "^6.1.3"
+  }
+}
