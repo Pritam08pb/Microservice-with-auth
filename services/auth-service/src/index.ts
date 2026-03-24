@@ -7,10 +7,12 @@ const startServer = async () => {
   try {
     // connect DB first
     await connectPostgres();
-
-    const server = app.listen(ENV.PORT, () => {
+    const server = app.listen(4001, "0.0.0.0", () => {
       logger.info(`🚀 Auth Service running on port ${ENV.PORT}`);
     });
+    // const server = app.listen(ENV.PORT, () => {
+    //   logger.info(`🚀 Auth Service running on port ${ENV.PORT}`);
+    // });
 
     // graceful shutdown
     process.on("SIGINT", () => {

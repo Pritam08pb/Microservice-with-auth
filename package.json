@@ -5,7 +5,7 @@
   "description": "AI Conversation Intelligence System (Microservices)",
 
   "scripts": {
-    "docker:infra": "docker compose -f infra/docker-compose.yml up -d postgres redis mongodb zookeeper kafka",
+    "docker:infra": "docker compose -f infra/docker-compose.yml up -d postgres redis mongodb zookeeper kafka livekit",
 
     "dev:auth": "npm run dev --prefix services/auth-service",
     "dev:notification": "npm run dev --prefix services/notification-service",

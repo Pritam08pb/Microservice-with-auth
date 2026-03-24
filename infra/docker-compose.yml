@@ -1,5 +1,18 @@
 services:
 
+  livekit:
+    image: livekit/livekit-server
+    command: --config /etc/livekit.yaml --node-ip 192.168.1.40
+    ports:
+      - "7880:7880"
+      - "7881:7881"
+      - "10000-10050:10000-10050/udp"
+    env_file:
+      - .env
+    volumes:
+      - ./livekit.yaml:/etc/livekit.yaml
+
+
   postgres:
     image: postgres:15
     container_name: helpy_postgres
