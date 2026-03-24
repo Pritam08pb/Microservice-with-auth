@@ -1,0 +1,27 @@
+﻿gateway/api-gateway/src/index.ts(4,39): error TS2307: Cannot find module 'http-proxy-middleware' or its corresponding type declarations.
+prisma.config.ts(11,3): error TS2375: Type '{ url: string | undefined; }' is not assignable to type '{ url?: string; shadowDatabaseUrl?: string; }' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'url' are incompatible.
+    Type 'string | undefined' is not assignable to type 'string'.
+      Type 'undefined' is not assignable to type 'string'.
+src/agents/core.agent.ts(69,31): error TS2339: Property 'user' does not exist on type 'PrismaClient<never, GlobalOmitConfig | undefined, DefaultArgs>'.
+src/agents/core.agent.ts(79,38): error TS2339: Property 'document' does not exist on type 'PrismaClient<never, GlobalOmitConfig | undefined, DefaultArgs>'.
+src/controllers/auth.controller.ts(20,41): error TS2339: Property 'user' does not exist on type 'PrismaClient<never, GlobalOmitConfig | undefined, DefaultArgs>'.
+src/controllers/auth.controller.ts(29,33): error TS2339: Property 'user' does not exist on type 'PrismaClient<never, GlobalOmitConfig | undefined, DefaultArgs>'.
+src/controllers/auth.controller.ts(53,33): error TS2339: Property 'user' does not exist on type 'PrismaClient<never, GlobalOmitConfig | undefined, DefaultArgs>'.
+src/controllers/auth.controller.ts(94,20): error TS2339: Property 'user' does not exist on type 'PrismaClient<never, GlobalOmitConfig | undefined, DefaultArgs>'.
+src/controllers/config.controller.ts(18,40): error TS2339: Property 'user' does not exist on type 'PrismaClient<never, GlobalOmitConfig | undefined, DefaultArgs>'.
+src/controllers/config.controller.ts(48,33): error TS2339: Property 'user' does not exist on type 'PrismaClient<never, GlobalOmitConfig | undefined, DefaultArgs>'.
+src/controllers/document.controller.ts(38,37): error TS2339: Property 'document' does not exist on type 'PrismaClient<never, GlobalOmitConfig | undefined, DefaultArgs>'.
+src/controllers/document.controller.ts(68,33): error TS2339: Property 'document' does not exist on type 'PrismaClient<never, GlobalOmitConfig | undefined, DefaultArgs>'.
+src/controllers/document.controller.ts(89,37): error TS2339: Property 'document' does not exist on type 'PrismaClient<never, GlobalOmitConfig | undefined, DefaultArgs>'.
+src/controllers/document.controller.ts(100,33): error TS2339: Property 'user' does not exist on type 'PrismaClient<never, GlobalOmitConfig | undefined, DefaultArgs>'.
+src/controllers/document.controller.ts(102,22): error TS2339: Property 'user' does not exist on type 'PrismaClient<never, GlobalOmitConfig | undefined, DefaultArgs>'.
+src/controllers/document.controller.ts(109,20): error TS2339: Property 'document' does not exist on type 'PrismaClient<never, GlobalOmitConfig | undefined, DefaultArgs>'.
+src/middleware/auth.middleware.ts(27,33): error TS2339: Property 'user' does not exist on type 'PrismaClient<never, GlobalOmitConfig | undefined, DefaultArgs>'.
+src/middleware/auth.middleware.ts(44,23): error TS2352: Conversion of type 'Jwt & JwtPayload & void' to type '{ userId: string; email: string; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type 'Jwt & JwtPayload & void' is missing the following properties from type '{ userId: string; email: string; }': userId, email
+src/middleware/auth.middleware.ts(44,34): error TS2769: No overload matches this call.
+  The last overload gave the following error.
+    Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+      Type 'undefined' is not assignable to type 'string'.
+src/middleware/auth.middleware.ts(47,39): error TS2339: Property 'user' does not exist on type 'PrismaClient<never, GlobalOmitConfig | undefined, DefaultArgs>'.

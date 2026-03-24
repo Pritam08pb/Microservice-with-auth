@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id               String   @id @default(uuid())
+  email            String   @unique
+  passwordHash     String
+  apiKey           String?  @unique
+
+  // Bot Configuration Settings
+  activeDocumentId String?
+  isEmailEnabled   Boolean  @default(false)
+  
+  tasks            AgentTask[]
+  oauth            OAuthIntegration?
+  documents        Document[]
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Document {
+  id              String   @id @default(uuid())
+  userId          String
+  filename        String
+  vectorKeyPrefix String
+
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model OAuthIntegration {
+  id           String   @id @default(uuid())
+  userId       String   @unique
+  provider     String   @default("google")
+  refreshToken String
+  
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model AgentTask {
+  id           String   @id @default(uuid())
+  userId       String
+  prompt       String
+  route        String?  // USE_RAG, USE_CLOUD, USE_LOCAL
+  resultText   String?
+  status       String   @default("QUEUED") // QUEUED, PROCESSING, COMPLETED, FAILED
+  errorMessage String?
+
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt    DateTime @default(now())
+  completedAt  DateTime?
+}

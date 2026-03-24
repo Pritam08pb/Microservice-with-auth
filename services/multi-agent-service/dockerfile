@@ -1,0 +1,18 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# install dependencies
+COPY services/multi-agent-service/package*.json ./services/multi-agent-service/
+RUN cd services/multi-agent-service && npm install
+
+# copy whole monorepo so shared folder exists
+COPY . .
+
+WORKDIR /app/services/multi-agent-service
+
+RUN npm run build
+
+EXPOSE 4005
+
+CMD ["npm","run","start"]
