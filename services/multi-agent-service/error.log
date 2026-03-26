@@ -1,0 +1,99 @@
+﻿node.exe : node:internal/modules/cjs
+/loader:1401
+At C:\Program 
+Files\nodejs\npx.ps1:29 char:3
++   & $NODE_EXE $NPX_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo              : 
+NotSpecified: (node:in    
+ternal/modules/cjs/loade    
+r:1401:String) [], Remot    
+eException
+    + FullyQualifiedErrorId     : 
+NativeCommandError
+ 
+  const err = new Error(message);
+              ^
+
+Error: Cannot find module 
+'.prisma/client/default'
+Require stack:
+- C:\Users\prita\Desktop\Helpy\servi
+ces\multi-agent-service\node_modules
+\@prisma\client\default.js
+- C:\Users\prita\Desktop\Helpy\servi
+ces\multi-agent-service\src\config\p
+risma.ts
+- C:\Users\prita\Desktop\Helpy\servi
+ces\multi-agent-service\src\middlewa
+re\auth.middleware.ts
+- C:\Users\prita\Desktop\Helpy\servi
+ces\multi-agent-service\src\routes\a
+gent.routes.ts
+- C:\Users\prita\Desktop\Helpy\servi
+ces\multi-agent-service\src\routes\i
+ndex.ts
+- C:\Users\prita\Desktop\Helpy\servi
+ces\multi-agent-service\src\app.ts
+- C:\Users\prita\Desktop\Helpy\servi
+ces\multi-agent-service\src\index.ts
+    at node:internal/modules/cjs/loa
+der:1401:15
+    at nextResolveSimple (C:\Users\p
+rita\Desktop\Helpy\services\multi-ag
+ent-service\node_modules\tsx\dist\re
+gister-D46fvsV_.cjs:4:1004)
+    at C:\Users\prita\Desktop\Helpy\
+services\multi-agent-service\node_mo
+dules\tsx\dist\register-D46fvsV_.cjs
+:3:2630
+    at C:\Users\prita\Desktop\Helpy\
+services\multi-agent-service\node_mo
+dules\tsx\dist\register-D46fvsV_.cjs
+:3:1542
+    at resolveTsPaths (C:\Users\prit
+a\Desktop\Helpy\services\multi-agent
+-service\node_modules\tsx\dist\regis
+ter-D46fvsV_.cjs:4:760)
+    at C:\Users\prita\Desktop\Helpy\
+services\multi-agent-service\node_mo
+dules\tsx\dist\register-D46fvsV_.cjs
+:4:1102
+    at m._resolveFilename (file:///C
+:/Users/prita/Desktop/Helpy/services
+/multi-agent-service/node_modules/ts
+x/dist/register-B7jrtLTO.mjs:1:789)
+    at defaultResolveImpl (node:inte
+rnal/modules/cjs/loader:1057:19)
+    at resolveForCJSWithHooks (node:
+internal/modules/cjs/loader:1062:22)
+    at Function._load (node:internal
+/modules/cjs/loader:1211:37) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\prita\\Desktop\\Help
+y\\services\\multi-agent-service\\no
+de_modules\\@prisma\\client\\default
+.js',
+    'C:\\Users\\prita\\Desktop\\Help
+y\\services\\multi-agent-service\\sr
+c\\config\\prisma.ts',
+    'C:\\Users\\prita\\Desktop\\Help
+y\\services\\multi-agent-service\\sr
+c\\middleware\\auth.middleware.ts',
+    'C:\\Users\\prita\\Desktop\\Help
+y\\services\\multi-agent-service\\sr
+c\\routes\\agent.routes.ts',
+    'C:\\Users\\prita\\Desktop\\Help
+y\\services\\multi-agent-service\\sr
+c\\routes\\index.ts',
+    'C:\\Users\\prita\\Desktop\\Help
+y\\services\\multi-agent-service\\sr
+c\\app.ts',
+    'C:\\Users\\prita\\Desktop\\Help
+y\\services\\multi-agent-service\\sr
+c\\index.ts'
+  ]
+}
+
+Node.js v22.17.0

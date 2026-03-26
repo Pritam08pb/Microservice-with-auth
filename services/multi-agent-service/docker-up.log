@@ -1,0 +1,23 @@
+﻿docker : unable to get image 
+'postgres:15': error during 
+connect: Get "http://%2F%2F.%
+2Fpipe%2FdockerDesktopLinuxEn
+gine/v1.51/images/postgres:15
+/json": open //./pipe/dockerD
+esktopLinuxEngine: The 
+system cannot find the file 
+specified.
+At line:1 char:1
++ docker compose up -d 
+postgres redis zookeeper 
+kafka *>&1 | Out-File - ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (unable   
+  to get i...file specifie   
+ d.:String) [], RemoteExc    
+eption
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
