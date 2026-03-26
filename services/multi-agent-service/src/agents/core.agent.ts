@@ -14,7 +14,7 @@ export const AgentState = Annotation.Root({
   finalDraft: Annotation<string>(),
   routingDecision: Annotation<"USE_RAG" | "USE_CLOUD" | "USE_LOCAL">()
 });
- 
+
 // Configure the Hybrid Models
 const cloudModel = new ChatGroq({
   apiKey: process.env.GROQ_API_KEY || "mock_key",
