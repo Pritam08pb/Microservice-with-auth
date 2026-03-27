@@ -91,12 +91,22 @@ export const documents = {
 };
 
 export const agent = {
-  task: (token: string, prompt: string) =>
-    apiRequest<{ messageId: string; message: string }>("/agents/task", {
-      method: "POST",
-      token,
-      body: { prompt },
-    }),
+  task: (token: string, prompt: string, conversationId?: string) =>
+    apiRequest<{ messageId: string; conversationId: string; message: string }>(
+      "/agents/task",
+      {
+        method: "POST",
+        token,
+        body: { prompt, conversationId },
+      },
+    ),
+  getConversations: (token: string) =>
+    apiRequest<{ conversations: any[] }>("/agents/conversations", { token }),
+  getConversation: (token: string, conversationId: string) =>
+    apiRequest<{ conversation: any }>(
+      `/agents/conversations/${conversationId}`,
+      { token },
+    ),
 };
 
 export const plugin = {
