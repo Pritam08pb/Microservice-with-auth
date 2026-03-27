@@ -7,4 +7,12 @@ const router = Router();
 // Endpoint for the UI to submit a new Task Request
 router.post("/task", requireAuth, agentController.submitTask);
 
+// Conversation management endpoints
+router.get("/conversations", requireAuth, agentController.getConversations);
+router.get(
+  "/conversations/:conversationId",
+  requireAuth,
+  agentController.getConversation,
+);
+
 export default router;

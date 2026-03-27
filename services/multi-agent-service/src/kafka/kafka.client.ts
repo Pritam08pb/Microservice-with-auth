@@ -16,15 +16,17 @@ export const initKafka = async () => {
   try {
     const admin = kafka.admin();
     await admin.connect();
-    
+
     // Create topic if it doesn't exist and wait for leader election
     await admin.createTopics({
-      topics: [{
-        topic: "agent-tasks",
-      }],
+      topics: [
+        {
+          topic: "agent-tasks",
+        },
+      ],
       waitForLeaders: true,
     });
-    
+
     await admin.disconnect();
     logger.info("📡 Kafka Topic 'agent-tasks' is ready.");
 
@@ -38,7 +40,7 @@ export const initKafka = async () => {
 
     // Start listening right away to the agent tasks
     await consumer.subscribe({ topic: "agent-tasks", fromBeginning: true });
-    
+
     // We export the run mechanism so the worker can attach its LangGraph logic
   } catch (err) {
     logger.error("Failed to connect to Kafka", err);
@@ -49,7 +51,12 @@ export const getKafkaProducer = () => producer;
 export const getKafkaConsumer = () => consumer;
 
 // Push a new thought onto the Queue
-export const publishAgentTask = async (userId: string, prompt: string) => {
+export const publishAgentTask = async (
+  userId: string,
+  prompt: string,
+  conversationId?: string,
+  conversationHistory?: any,
+) => {
   if (!producer) throw new Error("Kafka Producer offline");
 
   const messageId = crypto.randomUUID();
@@ -59,7 +66,14 @@ export const publishAgentTask = async (userId: string, prompt: string) => {
     messages: [
       {
         key: userId, // Keeps absolute order of thoughts for this specific user intact!
-        value: JSON.stringify({ messageId, userId, prompt, timestamp: Date.now() }),
+        value: JSON.stringify({
+          messageId,
+          userId,
+          prompt,
+          conversationId,
+          conversationHistory,
+          timestamp: Date.now(),
+        }),
       },
     ],
   });

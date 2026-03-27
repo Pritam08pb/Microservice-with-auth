@@ -20,6 +20,7 @@ model User {
   isEmailEnabled   Boolean  @default(false)
   
   tasks            AgentTask[]
+  conversations    Conversation[]
   oauth            OAuthIntegration?
   documents        Document[]
 
@@ -64,4 +65,29 @@ model AgentTask {
 
   createdAt    DateTime @default(now())
   completedAt  DateTime?
+}
+
+model Conversation {
+  id          String   @id @default(uuid())
+  userId      String
+  title       String?  // Auto-generated title from first message
+  isActive    Boolean  @default(true)
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages    Message[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Message {
+  id             String   @id @default(uuid())
+  conversationId String
+  role           String   // "user" or "assistant"
+  content        String
+  route          String?  // USE_RAG, USE_CLOUD, USE_LOCAL
+
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  createdAt      DateTime @default(now())
 }
